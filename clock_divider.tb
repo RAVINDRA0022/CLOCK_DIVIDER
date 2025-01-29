@@ -1,0 +1,19 @@
+`timescale 1ns / 1ps
+
+module clk_divider_tb();
+  reg clk ;
+  reg rst ;
+  wire clk_out;
+    
+      clk_divider uut (.clk(clk), .rst(rst), .clk_out(clk_out));
+       
+        always #10 clk = ~clk ;
+          initial 
+              begin
+                   clk = 0 ;
+                   rst =  1 ;
+              #20; rst = 0;
+              #100 $stop;
+                     
+                  end
+endmodule
